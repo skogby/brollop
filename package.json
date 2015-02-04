@@ -4,7 +4,8 @@
   "description": "Bröllopssida",
   "main": "index.js",
   "scripts": {
-    "test": "grunt test"
+    "test": "grunt test",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
