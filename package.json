@@ -1,0 +1,27 @@
+{
+  "name": "brollop",
+  "version": "0.0.1",
+  "description": "Bröllopssida",
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/skogby/brollop.git"
+  },
+  "keywords": [
+    "brollop"
+  ],
+  "author": "Erik Skogby",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/skogby/brollop/issues"
+  },
+  "homepage": "https://github.com/skogby/brollop",
+  "dependencies": {
+    "express": "^4.11.2",
+    "express-handlebars": "^1.1.0",
+    "sizzle": "^2.1.1"
+  }
+}
