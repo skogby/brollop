@@ -1,0 +1,157 @@
+body{
+	padding:0;
+	margin:0;
+    font-family: 'Helvetica Neue', 'Open Sans', sans-serif;
+	background:#fff;
+	font-size: 14px;
+	font-weight: 400;
+}
+body a{
+    transition:0.5s all;
+	-webkit-transition:0.5s all;
+	-moz-transition:0.5s all;
+	-o-transition:0.5s all;
+	-ms-transition:0.5s all;
+}
+input[type="button"],input[type="submit"]{
+	transition:0.5s all;
+	-webkit-transition:0.5s all;
+	-moz-transition:0.5s all;
+	-o-transition:0.5s all;
+	-ms-transition:0.5s all;
+}
+/*h1,h2,h3,h4,h5,h6{
+	margin:0;			   
+}	*/
+p{
+	margin:0;
+}
+ul{
+	margin:0;
+	padding:0;
+}
+label{
+	margin:0;
+}
+.top-navigation {
+	padding: 10px;
+	position: fixed;
+	top:0;
+	left:0;
+	width: 100%;
+	text-align: center;
+	overflow-y: auto;
+	background-color: rgba(255, 150, 150, 0.5);
+	z-index: 500;
+}
+h1 {
+	font-size: 8em;
+}
+.center {
+	text-align: center;
+}
+.round {
+	border-radius: 50%;
+	max-width: 100%;
+}
+.top-menu ul {
+	width: auto;
+	min-width: 530px;
+}
+.top-menu ul li{
+	display:inline-block;
+	margin: 0 5px;
+}
+.top-menu ul li a{
+	color:#444;
+	text-transform:uppercase;
+	font-size:14px;
+	font-weight:300;
+	text-decoration:none;
+	line-height: 14px;
+}
+.top-menu ul li a.active {
+	font-weight:500;
+	color: #000;
+}
+.top-menu ul li a i{
+	top:2px;
+	right: 2px;
+}
+.white-text *{
+	color: white;
+}
+
+.profileImage {
+	border-radius: 500px;
+	width: 60%;
+	border: 3px solid #666;
+}
+.section {
+	width: 100%;
+	height: auto;
+	position: relative;
+}
+.section img.bg{
+	width: 100%;
+	position: relative;
+}
+.section .overlay{
+	position: absolute;
+	top: 60%;
+	left: 0;
+	width: 100%;
+}
+.section.jumbotron {
+	margin: 0;
+}
+#countdown-bg {
+	background: url(../images/skidor.jpg) no-repeat center bottom;
+	background-size: 100% auto;
+}
+/*-- comming-soon-page --*/
+.commingsoon p {
+	color: #444;
+	font-size: 1.6em;
+}
+.commingsoon {
+	margin-bottom:5em;
+	background: url('../images/line.png') no-repeat center 19px;
+}
+/* ---------- TIMER ---------- */
+#counter {
+	width: 80%;
+	max-width: 600px;
+	height: 120px;
+	margin: 0 auto;
+	font-size: 50px;
+	background-color: rgba(255, 150, 150, 0.5);
+}
+
+.countDays, .countHours, .countMinutes, .countSeconds {
+    float: left;
+    width: 23%;
+    color: #444;
+    text-align: center;
+    margin: 0 1%;
+}
+.points {
+    display: none;
+}
+.position {
+	position: relative;
+	width:35px;
+	margin:0;
+}
+.boxName {
+    float: left;
+    width: 100%;
+    font-size: 18px;
+    color: #EEE;
+    font-weight: 300;
+    clear: both;
+    background: rgba(0,0,0,0.6);
+    padding: 4px;
+}
+.Hours { margin-left: 5px; }
+.Seconds { margin-left: 5px; }
