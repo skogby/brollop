@@ -1,11 +1,8 @@
 //ßaddEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
 $(document).ready(function(){
-
-
 	/* ---- Countdown timer ---- */
 
 	$('#counter').countdown(new Date('2015-05-02 14:30'));
-
 
 	//Scroll stuff and menu
 	var sections = $('[data-nav~=section]'),
@@ -38,7 +35,10 @@ $(document).ready(function(){
 		if (previousActiveSection !== currentActiveSection) {
 			var elem = $(sections[currentActiveSection]);
 			navItems.find('.active').removeClass('active');
-			navItems.find('[data-content~=' + elem.attr('id') + ']').addClass('active');
+			var item = navItems.find('[data-content~=' + elem.attr('id') + ']').addClass('active');
+            navItems.animate({
+                scrollLeft: navItems.scrollLeft() + item.position().left - 25
+            }, 1000);
 		}
 	}
 	$(document).on('scroll', function(e) {

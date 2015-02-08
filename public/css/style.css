@@ -55,15 +55,15 @@ h1 {
 	border-radius: 50%;
 	max-width: 100%;
 }
-.top-menu ul {
+.top-navigation ul {
 	width: auto;
 	min-width: 580px;
 }
-.top-menu ul li{
+.top-navigation ul li{
 	display:inline-block;
 	margin: 0 5px;
 }
-.top-menu ul li a{
+.top-navigation ul li a{
 	color:#444;
 	text-transform:uppercase;
 	font-size:14px;
@@ -71,25 +71,24 @@ h1 {
 	text-decoration:none;
 	line-height: 14px;
 }
-.top-menu ul li a.active {
+.top-navigation ul li a.active {
 	font-weight:500;
 	color: #000;
 }
-.top-menu ul li a.active:before {
+.top-navigation ul li a.active:before {
 	content: "\e005";
 	position: relative;
 	top: 2px;
 	right: 2px;
 	display: inline-block;
-	font-family: 'Glyphicons Halflings';
+	font-family: 'Glyphicons Halflings' monospace;
 	font-style: normal;
 	font-weight: normal;
 	line-height: 1;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
-}
-.top-menu ul li a i{
+.top-navigation ul li a i{
 	top:2px;
 	right: 2px;
 }
@@ -122,15 +121,59 @@ h1 {
 }
 .section .overlay{
 	position: absolute;
-	top: 60%;
+	top: 58%;
 	left: 0;
 	width: 100%;
 }
+.birds > img {
+    width: 15%;
+}
+@media (min-width: 500px) and (max-width: 900px) {
+    h1 {
+        font-size: 4em;
+    }
+}
+@media (max-width: 600px) {
+    h1 {
+        margin: 5px 0;
+    }
+}
+@media (min-width: 400px) and (max-width: 499px) {
+    h1 {
+        font-size: 3em;
+    }
+    h2 {
+        font-size: 1.5em;
+    }
+}
+@media (max-width: 399px) {
+    h1 {
+        font-size: 2em;
+    }
+    h2 {
+        font-size: 1.5em;
+        margin: 10px 0;
+    }
+    h3 {
+        font-size: 1.3em;
+        text-transform: uppercase;
+    }
+}
 .section.jumbotron {
 	margin: 0;
+    background-color: #FEFAFF;
+}
+#practical {
+    padding: 20px 0 80px;
+    background-color: #333;
+    color: white;
+    font-weight: 300;
+}
+#practical .row > div {
+    margin: 10px 0 40px;
 }
 #countdown-bg {
-	background: url(../images/skidor.jpg) no-repeat center bottom;
+	background: url('../images/skidor.jpg') no-repeat center bottom;
 	background-size: 100% auto;
 }
 /*-- comming-soon-page --*/
@@ -207,25 +250,19 @@ h1 {
 	margin-bottom: 20px;
 	position: relative;
 }
-
 .timeline > li:before,
 .timeline > li:after {
 	content: " ";
 	display: table;
-}
-
-.timeline > li:after {
 	clear: both;
 }
 
-.timeline > li:before,
-.timeline > li:after {
-	content: " ";
-	display: table;
+.timeline > li.no-clear-after {
+    margin: 0;
 }
-
-.timeline > li:after {
-	clear: both;
+.timeline > li.no-clear-before:before,
+.timeline > li.no-clear-after:after {
+    clear: none;
 }
 
 .timeline > li > .timeline-panel {
@@ -274,10 +311,7 @@ h1 {
 	margin-left: -25px;
 	background-color: rgba(255, 150, 150, 1);
 	z-index: 100;
-	border-top-right-radius: 50%;
-	border-top-left-radius: 50%;
-	border-bottom-right-radius: 50%;
-	border-bottom-left-radius: 50%;
+	border-radius: 50%;
 }
 
 .timeline > li.timeline-inverted > .timeline-panel {
