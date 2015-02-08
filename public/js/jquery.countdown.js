@@ -14,141 +14,77 @@
 		minutes	= 60;
 	
 	// Creating the plugin
-	$.fn.countdown = function(prop){
+	$.fn.countdown = function(timestamp){
 		
-		var options = $.extend({
-			callback	: function(){},
-			timestamp	: 0
-		},prop);
-		
-		var left, d, h, m, s, positions;
-
+		var left, d, h, m, s, self = this, elems = {};
+		left = Math.floor((timestamp.getTime() - (new Date()).getTime()) / 1000);
 		// Initialize the plugin
-		init(this, options);
-		
-		positions = this.find('.position');
-		
+		this.addClass('countdownHolder');
+
+		// Creating the markup inside the container
+		$.each(['dag','tim','min','sek'], function(i){
+			var unit = $('<div class="count">' +
+				'<span class="position">' +
+					 '<span class="firstDigit">0</span>' +
+				'</span>' +
+				'<span class="position">' +
+					'<span class="secondDigit">0</span>' +
+				'</span>' +
+				'<span class="boxName">' +
+					'<span>' + this + '</span>' +
+				'</span>'
+			);
+			elems[this + '0'] = unit.find('.firstDigit');
+			elems[this + '1'] = unit.find('.secondDigit');
+			unit.appendTo(self);
+		});
+				
 		(function tick(){
-			
+			left--;
 			// Time left
-			left = Math.floor((options.timestamp - (new Date())) / 1000);
 			
 			if(left < 0){
 				left = 0;
+				return;
 			}
 			
+			var tmp = left
 			// Number of days left
-			d = Math.floor(left / days);
-			updateDuo(0, 1, d);
-			left -= d*days;
+			if(d !== Math.floor(tmp / days)) {
+				d = Math.floor(tmp / days);
+				update("dag", d);
+			}
+			tmp -= d*days;
 			
-			// Number of hours left
-			h = Math.floor(left / hours);
-			updateDuo(2, 3, h);
-			left -= h*hours;
+			// Number of hours tmp
+			if (h !== Math.floor(tmp / hours)) {
+				h = Math.floor(tmp / hours)
+				update("tim", h);
+			}
+			tmp -= h*hours;
 			
-			// Number of minutes left
-			m = Math.floor(left / minutes);
-			updateDuo(4, 5, m);
-			left -= m*minutes;
+			// Number of minutes tmp
+			if (m !== Math.floor(tmp / minutes)){
+				m = Math.floor(tmp / minutes);
+				update("min", m);
+			}
+			tmp -= m*minutes;
 			
-			// Number of seconds left
-			s = left;
-			updateDuo(6, 7, s);
-			
-			// Calling an optional user supplied callback
-			options.callback(d, h, m, s);
+			// Number of seconds tmp
+			s = tmp;
+			update("sek", s);
 			
 			// Scheduling another call of this function in 1s
-			setTimeout(tick, 1000);
+			setTimeout(tick, 999);
 		})();
 		
 		// This function updates two digit positions at once
-		function updateDuo(minor,major,value){
-			switchDigit(positions.eq(minor),Math.floor(value/10)%10);
-			switchDigit(positions.eq(major),value%10);
+		function update(name, value){
+			elems[name + '0'].text(Math.floor(value/10)%10);
+			elems[name + '1'].text(value%10);
 		}
 		
 		return this;
 	};
 
-
-	function init(elem, options){
-		elem.addClass('countdownHolder');
-
-		// Creating the markup inside the container
-		$.each(['Days','Hours','Minutes','Seconds'],function(i){
-			var boxName;
-			if(this=="Days") {
-				boxName = "DAYS";
-			}
-			else if(this=="Hours") {
-				boxName = "HRS";
-			}
-			else if(this=="Minutes") {
-				boxName = "MNTS";
-			}
-			else {
-				boxName = "SECS";
-			}
-			$('<div class="count'+this+'">' +
-				'<span class="position">' +
-					'<span class="digit static">0</span>' +
-				'</span>' +
-				'<span class="position">' +
-					'<span class="digit static">0</span>' +
-				'</span>' +
-				'<span class="boxName">' +
-					'<span class="'+this+'">' + boxName + '</span>' +
-				'</span>'
-			).appendTo(elem);
-			
-			if(this!="Seconds"){
-				elem.append('<span class="points">:</span><span class="countDiv countDiv'+i+'"></span>');
-			}
-		});
-
-	}
-
-	// Creates an animated transition between the two numbers
-	function switchDigit(position,number){
-		
-		var digit = position.find('.digit')
-		
-		if(digit.is(':animated')){
-			return false;
-		}
-		
-		if(position.data('digit') == number){
-			// We are already showing this number
-			return false;
-		}
-		
-		position.data('digit', number);
-		
-		var replacement = $('<span>',{
-			'class':'digit',
-			css:{
-				top:0,
-				opacity:0
-			},
-			html:number
-		});
-		
-		// The .static class is added when the animation
-		// completes. This makes it run smoother.
-		
-		digit
-			.before(replacement)
-			.removeClass('static')
-			.animate({top:0,opacity:0},'fast',function(){
-				digit.remove();
-			})
-
-		replacement
-			.delay(100)
-			.animate({top:0,opacity:1},'fast',function(){
-				replacement.addClass('static');
-			});
-	}
 })(jQuery);
