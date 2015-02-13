@@ -7,7 +7,8 @@ $(document).ready(function(){
 	//Scroll stuff and menu
 	var sections = $('[data-nav~=section]'),
 		navItems = $('#navigation-items'),
-		currentActiveSection = 0;
+		currentActiveSection = 0,
+    bigMenu = true;
 
 	function isElementMainSection(el, offsetY) {
 		offsetY = offsetY || 0;
@@ -36,21 +37,35 @@ $(document).ready(function(){
 			var elem = $(sections[currentActiveSection]);
 			navItems.find('.active').removeClass('active');
 			var item = navItems.find('[data-content~=' + elem.attr('id') + ']').addClass('active');
-            navItems.animate({
-                scrollLeft: navItems.scrollLeft() + item.position().left - 25
-            }, 1000);
+      navItems.animate({
+          scrollLeft: navItems.scrollLeft() + item.position().left - 25
+      }, 1000);
 		}
 	}
 	$(document).on('scroll', function(e) {
 		if (!isElementMainSection(sections[currentActiveSection])) {
-	      detectInScreenSection();
-	    }
+      detectInScreenSection();
+    }
+    if (document.body.scrollTop > 10 && bigMenu) {
+      bigMenu = false;
+      navItems.removeClass("big");
+    } else if (document.body.scrollTop < 10 && !bigMenu) {
+      bigMenu = true;
+      navItems.addClass("big");
+    }
 	});
 	navItems.find('a').on('click', function(e) {
 		e.preventDefault();
 		$('html, body').animate({
 	        scrollTop: $('#' + $(e.target).data('content')).offset().top + 1
 	    }, 1000);
-	})
+	});
+
+  var form = $("#osa-form");
+  form.on("submit", function(e) {
+    e.stopPropagation();
+    e.preventDefault();
+    $.ajax({url: '/form', method: 'POST', data: form.serialize()});
+  });
 
 });

@@ -21,8 +21,11 @@
   },
   "homepage": "https://github.com/skogby/brollop",
   "dependencies": {
+    "body-parser": "^1.11.0",
     "express": "^4.11.2",
     "express-handlebars": "^1.1.0",
+    "google-spreadsheet": "^0.2.8",
+    "node-env-file": "^0.1.5",
     "sizzle": "^2.1.1"
   }
 }
