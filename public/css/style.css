@@ -396,6 +396,9 @@ table#wishListTable * {
 }
 
 @media (max-width: 767px) {
+	#ringbling {
+		height: 250px;
+	}
 	ul.timeline:before {
 		left: 40px;
 	}
