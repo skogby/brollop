@@ -55,9 +55,20 @@ h1 {
 .center {
 	text-align: center;
 }
+h4 {
+	text-transform: uppercase;
+	font-weight: 300;
+	color: #FFECEC;
+}
+#ringbling {
+	background: url('/images/ring-bling.jpg') no-repeat center bottom transparent;
+	background-size: 170% auto;
+	height: 460px;
+}
 .round {
 	border-radius: 50%;
 	max-width: 100%;
+	box-shadow: 0 0 5px rgba(0,0,0,0.5);
 }
 .top-navigation ul {
 	width: auto;
@@ -87,7 +98,7 @@ footer ul li,
 	top: 2px;
 	right: 2px;
 	display: inline-block;
-	font-family: 'Glyphicons Halflings' monospace;
+	font-family: 'Glyphicons Halflings';
 	font-style: normal;
 	font-weight: normal;
 	line-height: 1;
@@ -190,7 +201,7 @@ footer ul li {
 }
 .section.jumbotron {
 	margin: 0;
-    background-color: #FEFAFF;
+    background-color: #D68282;
 }
 #practical {
     padding: 20px 0 80px;
@@ -377,6 +388,11 @@ footer ul li {
 .timeline-body .fit {
     width: 100%;
     height: auto;
+}
+
+table#wishListTable,
+table#wishListTable * {
+	border-color: #777;
 }
 
 @media (max-width: 767px) {
