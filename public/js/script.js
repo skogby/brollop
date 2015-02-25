@@ -76,7 +76,7 @@ $(document).ready(function(){
     });
 
     window.scrollTo(0,1);
-    skrollr.init({
+    // skrollr.init({
 
-    });
+    // });
 });
