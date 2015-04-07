@@ -59,15 +59,15 @@ $(document).ready(function(){
         }, 1000);
     });
 
-    var form = $("#osa-form");
-    form.on("submit", function(e) {
-        e.stopPropagation();
-        e.preventDefault();
-        $.ajax({url: '/form', method: 'POST', data: form.serialize()});
-        var btn = form.find('.btn');
-        $('<h4>Tack för ditt svar!</h4>').insertAfter(btn);
-        btn.remove();
-    });
+    // var form = $("#osa-form");
+    // form.on("submit", function(e) {
+    //     e.stopPropagation();
+    //     e.preventDefault();
+    //     $.ajax({url: '/form', method: 'POST', data: form.serialize()});
+    //     var btn = form.find('.btn');
+    //     $('<h4>Tack för ditt svar!</h4>').insertAfter(btn);
+    //     btn.remove();
+    // });
 
     $('#toggleWishList').on('click', function(e){
     	e.preventDefault();
